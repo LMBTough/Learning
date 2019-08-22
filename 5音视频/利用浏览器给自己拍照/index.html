@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>WebRTC take picture</title>
+  <style>
+         .none {
+              -webkit-filter: none;
+         }
+
+         .blur {
+              -webkit-filter: blur(3px);
+         }
+
+         .grayscale {
+              -webkit-filter: grayscale(1);
+         }
+
+         .invert {
+              -webkit-filter: invert(1);
+         }
+
+         .sepia {
+              -webkit-filter: sepia(1);
+         }
+
+    </style>
+</head>
+<body>
+    <video autoplay playsinline id="player"></video>
+    <button id="TakePhoto">Take</button>
+    <canvas id="picture"></canvas>
+    <div>
+        <button id="save"> 保存 </button>
+    </div>
+    <select id="filter">
+      <option value="none">None</option>
+      <option value="blur">blur</option>
+      <option value="grayscale">Grayscale</option>
+      <option value="invert">Invert</option>
+      <option value="sepia">sepia</option>
+    </select>
+    <script src="./js/client.js"></script>
+
+</body>
+</html>
+
+
