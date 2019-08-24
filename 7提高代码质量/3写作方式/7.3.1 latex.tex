@@ -1,0 +1,130 @@
+% 导言区 设置文章属性
+\documentclass[10pt]{article} % book, report, letter
+%设置normal size 为10pt
+\usepackage{ctex} % 引入支持中文的包
+%提供针对XeTex的改进并加入了XeTex的LOGO
+\usepackage{xltxtra}
+
+
+\newcommand\degree{^\circ} % 定义变量 文中用\degree使用
+\newcommand{\myfont}{\textbf{\textsf{Fancy Text}}}
+
+
+\title{\heiti My First Document} % 支持修改字体
+\author{zzy}
+\date{\today}
+
+% 正文区
+\begin{document}
+	\maketitle
+	
+	ctex具体使用查看文档\\
+	$f(x)^\circ$  % $里包含的是数学公式
+	$$f(x)$$ %用两个$会另其一行
+	\begin{equation} % 生成带编号的数学公式
+		AB^2 = BC ^2 + AC ^2
+	\end{equation}
+	% 字体族设置 (罗马字体、无称线字体、打字机字体)
+	% 两种方式使用
+	\textrm{Roman Family}
+	{\rmfamily test\\}
+	\texttt{Typewriter Family}
+	{\ttfamily test\\}
+	\textsf{Sans Serif Family}
+	{\sffamily test\\}
+	% 字体系列设置（粗细、宽度）
+	\textup{Upright Shape}
+	{\upshape test\\}
+	\textit{Italic Shape}
+	{\itshape test\\}
+	\textsl{Slanted Shape}
+	{\slshape test\\}
+	\textsc{Small Caps Shape}
+	{\scshape test\\}
+	% 中文字体
+	{\songti 宋体\\}
+	{\heiti 黑体\\}
+	{\fangsong 仿宋\\}
+	{\kaishu 楷书\\}
+	\textbf{blod\\}
+	\textit{中文斜体\\}
+	% 字体大小
+	{\tiny Hello}
+	{\scriptsize Hello}
+	{\footnotesize Hello}
+	{\small Hello}
+	{\normalsize Hello}
+	{\large Hello}
+	{\Large Hello}
+	{\LARGE Hello}
+	{\huge Hello}	
+	{\Huge Hello}	
+	
+	% 中文字号设置命令 可以是负数
+	\zihao{5} 你好！
+	
+	% 自定义字体
+	\myfont{你好v }
+	
+	%设定小节
+	% 如果用了book可以用\chapter{title} 但此时subsubsection没用的
+	\tableofcontents %产生整个的目录
+	\section{first}
+	添加正文
+		\subsection{one}
+			\subsubsection{1}
+			添加正文，在正文中间插入$\backslash$par \par 换段落
+	\section{second}
+	\section{third}
+	
+	\section{空白字符}
+	% 空行多个等于一个
+	% 自动缩进，不能用空格代替
+	% 英文中多个空格处理为1个空格，中文空格会被忽略
+	% 汉字与其他字符的间距会自动由XeLaTeX处理
+	% 禁止使用中文全角空格
+	% 1em
+	a\quad b\\
+	
+	% 2em
+	a \qquad b\\
+	
+	% 约为1/6em
+	a \thinspace b \\
+	
+	%0.5em
+	a \enspace b \\
+	
+	% 空格
+	a\ b \\
+	
+	% 硬空格
+	a~b \\
+	
+	% 1pc=12pt=4.218mm
+	a\kern 1pc b\\
+	a\kern -1em b\\
+	a\hskip 1em b\\
+	a\hspace{35pt}b\\
+	
+	
+	% 弹性长度
+	a\hfill b	
+	% 反斜杠用 \textbackslash
+	\textbackslash
+	
+	
+	\section{标识符号}
+	\TeX{} \LaTeX{} \LaTeXe{}
+	\section{控制符}
+	\# \$ \% \{ \} \~{} \_{} \^{} \&
+	\section{排版符号}
+	\S \P \dag \ddag \copyright \pounds
+	\section{插入图片}
+	% 导言区: \usepackage{graphix}
+	% 语法： \includegraphics[<选项>]{<文件名>}
+	% 格式： EPS，PDF, PNG, JPEG, BMP
+	\usepackage{graphicx}
+	%\graphicspath{{figures/}， {otherpath/}} 设置在当前目录下figures中
+	
+\end{document}
