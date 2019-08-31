@@ -4,7 +4,7 @@ import glob
 import pdb
 
 file_lists = []
-file_extensions = ['emmx', 'docx', 'doc', 'md', 'odt', 'tex']
+file_extensions = ['emmx', 'docx', 'doc', 'md', 'odt', 'tex', 'bib']
 
 collect_path = os.path.join('.', 'non_classified')
 
@@ -61,11 +61,12 @@ def clear_tex_generated_pdf():
 		find_path = find_tex_file[:find_tex_file.find('.tex')] + '*'
 		find_all_same_name_file = glob.glob(find_path)
 		for file in find_all_same_name_file:
-			if not file.endswith('.tex'):
+			if not file.endswith('.tex') and file.endswith('bib'):
 				os.remove(file)
 
 def main():
 	clear_tex_generated_pdf()
 	find_and_move_record_files()
+
 if __name__ == '__main__':
 	main()

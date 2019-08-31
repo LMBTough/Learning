@@ -1,9 +1,19 @@
 % 导言区 设置文章属性
 \documentclass[10pt]{article} % book, report, letter
+
+%在终端用 texdoc 包名 打开对应的文档说明
+
 %设置normal size 为10pt
 \usepackage{ctex} % 引入支持中文的包
 %提供针对XeTex的改进并加入了XeTex的LOGO
 \usepackage{xltxtra}
+%图片
+\usepackage{graphicx}
+%矩阵
+\usepackage{amsmath}
+
+%\graphicspath{{figures/}， {otherpath/}} 设置在当前目录下figures中
+\graphicspath{{/home/zzy/图片/}, {}}
 
 
 \newcommand\degree{^\circ} % 定义变量 文中用\degree使用
@@ -124,7 +134,154 @@
 	% 导言区: \usepackage{graphix}
 	% 语法： \includegraphics[<选项>]{<文件名>}
 	% 格式： EPS，PDF, PNG, JPEG, BMP
-	\usepackage{graphicx}
-	%\graphicspath{{figures/}， {otherpath/}} 设置在当前目录下figures中
 	
+	% \includegraphics[height=2cm, with=2cm or width=0.2\textwidth]{name}
+	\section{表格} % 五列的表格分别是左对齐 居中对齐 p指定列 居中对齐 右对齐 竖线来生成竖线
+		\begin{tabular}{l | c || p{1.5cm} c r}
+			\hline \hline% 生成横线 两个双横线
+			姓名 & 语文 & 3 & 4 & 5 \\
+			6 & 7 & 8 & 9 & 10
+		\end{tabular}
+	\section{浮动体}
+	\newpage
+	% 图片浮动体
+	\begin{figure}[htbp] % h 当前位置 t页顶 b页底 p独立一页
+		\centering % 环境中居中
+		\includegraphics[width=2cm]{loin}
+		\caption{ \TeX 系统中的吉祥物--小狮子} \label{flg-lion}%标题
+	\end{figure}
+	% 表格浮动体
+	\begin{table}[htbp]
+		\begin{tabular}{l | c || p{1.5cm} c r}
+			\hline \hline% 生成横线 两个双横线
+			姓名 & 语文 & 3 & 4 & 5 \\
+			6 & 7 & 8 & 9 & 10
+		\end{tabular}
+		\caption{考试水平单}\ref{flg-lion} % 这里会显示1，因为\label设置在图1那
+	\end{table}
+	\section{数学}
+	\subsection{上标}
+	$3x^{20}$ % 20要用{}进行分组
+	\subsection{下标}
+	$2x_2$
+	\subsection{希腊字母}
+	$\alpha$
+	$\beta$
+	$\gamma$
+	$\epsilon$
+	$\pi$
+	$\omega$
+	\\
+	$\Gamma$
+	$\Delta$
+	$\Theta$
+	$\Pi$
+	$\Omega$
+	\subsection{数学符号}
+	$\log$
+	$\sin$
+	$\cos$
+	$\arcsin$
+	$\arccos$
+	$\ln$
+	$\sqrt{x}$
+	$\sqrt[3]{x}$
+	$3/4$
+	$\frac{1}{2}$
+	\subsection{行间公式}
+	\subsubsection{美元符号}
+	交换率是 $$a+b = b+a$$
+	\subsubsection{displaymath环境}
+	\begin{displaymath}
+		a+b=b+a
+	\end{displaymath}
+	\subsubsection{自动编号公式equation环境}
+	\begin{equation}
+		a+b = b+a \label{eq:commutative}
+	\end{equation}
+	\subsubsection{不编号公式equation*环境}
+	\section{矩阵}
+	$$
+	\begin{matrix} %\usepackage{amsmath}
+		0 & 1 \\
+		1 & 0
+	\end{matrix} \qquad
+	\begin{pmatrix} %\usepackage{amsmath}
+	0 & 1 \\
+	1 & 0
+	\end{pmatrix} \qquad
+	\begin{bmatrix} %\usepackage{amsmath}
+	0 & 1 \\
+	1 & 0
+	\end{bmatrix} \qquad
+	\begin{Bmatrix} %\usepackage{amsmath}
+	0 & 1 \\
+	1 & 0
+	\end{Bmatrix} \qquad
+	\begin{vmatrix} %\usepackage{amsmath}
+	0 & 1 \\
+	1 & 0
+	\end{vmatrix} \qquad
+	\begin{Vmatrix} %\usepackage{amsmath}
+	0 & 1 \\
+	1 & 0
+	\end{Vmatrix} \qquad
+	$$
+	% \text{test} 可以在数学符号中临时切换成文本
+	% 用 \multicolumn{2}{c}{text}合并多列
+	\subsection{省略符号} % \dots \ddots \vdots 
+	$$
+	\begin{bmatrix} % 用 \times 匹配乘法
+	0 & \dots & 1 \\
+	& \ddots & \vdots  \\
+	0 & & 6 \\
+	\hdotsfor{4} % 产生跨列省略号
+	\end{bmatrix}_{n \times n}
+	$$
+	产生行内小矩阵\begin{math}
+		\left(\begin{smallmatrix} %\usepackage{amsmath} \left(生成左括号
+		0 & 1 \\1 & 0
+		\end{smallmatrix}\right)
+	\end{math}
+	% array环境（类似表格）
+	\[
+	\begin{array}{r|r}
+	\frac12 & 0\\
+	\hline
+	0 & -\frac a{bc} \\
+	\end{array}
+	\]
+	\section{多行公式排版}
+	\begin{gather}
+		a+b=b+ a \notag\\ % notag不编号
+		ab ba
+	\end{gather}
+	\begin{gather*}
+	a+b=b+ a\\
+	ab ba
+	\end{gather*}
+	\begin{equation}
+	\begin{split}
+	\cos 2x &=\cos^2 x - \sin^2 x\\
+	&=2\cos^2 x-1
+	\end{split}
+	\end{equation}
+	
+	%case环境
+	%类似分段函数
+	\begin{equation}
+		D(x) = \begin{cases}
+		1, & \text{如果} x \in {Q}; \\
+		0, & \text{如果} x \in {R} \setminus {Q}.
+		\end{cases}
+	\end{equation}
+	\section{参考文献}
+		%\begin{thebibliography}{编号样本}
+		%	\bibitem[记号]{引用标志}文献条目1
+		%\end{thebibliography}
+		\begin{thebibliography}{99}
+			\bibitem{article1} 123 \emph 强调内容
+		\end{thebibliography}
+		\cite{article1} % 引用参考文献
+		
 \end{document}
