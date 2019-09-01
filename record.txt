@@ -13,5 +13,6 @@
 ./4网络编程/本地套接字.docx
 ./4网络编程/UDP.docx
 ./4网络编程/yolanda/README.md
+./1机器学习相关/2人脸检测/1.2.1 Joint Face Detection and Facial Motion Retargeting for Multiple Faces.md
 ./3编译原理/语法分析.docx
 ./non_classified/7.3.1 latex.tex

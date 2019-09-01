@@ -12,9 +12,6 @@ def find_subfloders(path, is_record):
 	sub_dict = {}
 	for root, subfolders, files in os.walk(path):
 		if root == path:
-			# if is_record:
-			# 	for file in files:
-			# 		file_lists.append(os.path.join(root, file))
 			for subfolder in subfolders:
 				result = re.match(r'(\d+)(.*)', subfolder)
 				if result:
@@ -56,12 +53,19 @@ def find_and_move_record_files():
 			record_file.write(file_list+'\n')
 
 def clear_tex_generated_pdf():
+	for file in glob.glob(os.path.join(collect_path, 'texput.log')):
+		os.remove(file)
 	find_tex_files = glob.glob(os.path.join(collect_path, '*.tex'))
 	for find_tex_file in find_tex_files:
 		find_path = find_tex_file[:find_tex_file.find('.tex')] + '*'
 		find_all_same_name_file = glob.glob(find_path)
 		for file in find_all_same_name_file:
-			if not file.endswith('.tex') and file.endswith('bib'):
+			if file.endswith('.gz'):
+				os.remove(file)
+			if (not (file.endswith('.tex') or file.endswith('.bib'))) and (
+					file[:file.rfind('.')] == find_tex_file[:find_tex_file.find('.tex')]):
+				# print(file)
+				# print(find_tex_file)
 				os.remove(file)
 
 def main():
