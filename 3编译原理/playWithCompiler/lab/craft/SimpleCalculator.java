@@ -12,6 +12,7 @@ import java.util.List;
  *
  * 递归项在右边，会自然的对应右结合。我们真正需要的是左结合。
  */
+
 public class SimpleCalculator {
 
     public static void main(String[] args) {
