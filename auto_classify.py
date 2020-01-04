@@ -48,7 +48,7 @@ def find_and_move_record_files():
 			# print(sub_dict[sub_num])
 			move_files(num, sub_num, sub_dict[sub_num])
 	file_lists = update_record()
-	with open(os.path.join('.', 'record.txt'), 'w', encoding='utf8') as record_file:
+	with open(os.path.join('.', 'record.txt'), 'w') as record_file:
 		for file_list in file_lists:
 			record_file.write(file_list+'\n')
 
