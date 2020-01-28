@@ -4,7 +4,7 @@ import glob
 import pdb
 
 file_lists = []
-file_extensions = ['emmx', 'docx', 'doc', 'md', 'odt', 'tex', 'bib']
+file_extensions = ['emmx', 'docx', 'doc', 'md', 'odt', 'tex', 'bib',  'pdf']
 
 collect_path = os.path.join('.', 'non_classified')
 
